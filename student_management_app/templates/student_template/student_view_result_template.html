@@ -1,0 +1,41 @@
+{% extends 'student_template/base_template.html' %}
+
+{% block main_content %}
+
+<!-- Main content -->
+
+
+            <div class="header-fixed">
+
+				<table>
+					<thead>
+                     <tr>
+
+                          <th>Course Name</th>
+                          <th>Term Test Mark</th>
+                         <th>Attendance Mark</th>
+                         <th>Semester Final Mark</th>
+                         <th>Grade</th>
+                    </tr>
+                  </thead>
+					<tbody>
+                    {% for result in student_results %}
+                    <tr>
+
+                        <td>{{result.course_id.course_name}}</td>
+                        <td>{{result.course_term_test_marks}}</td>
+                        <td>{{result.course_attendance_marks}}</td>
+                      <td>{{result.course_semester_final_marks}}</td>
+
+                        <td>{{result.course_grade}}</td>
+
+
+                    </tr>
+                  {% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+
+
+{% endblock main_content %}

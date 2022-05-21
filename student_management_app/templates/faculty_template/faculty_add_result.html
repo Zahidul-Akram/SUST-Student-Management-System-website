@@ -1,0 +1,105 @@
+{% extends 'faculty_template/base_template.html' %}
+
+{% block main_content %}
+
+    <form role="form" action="/student_result_save" method="post" >
+        {% csrf_token %}
+
+            	<div id="wizard">
+            		<!-- SECTION 1 -->
+	                <h1>Add Result</h1>
+	                <section>
+                        <div class="form-holder">
+							<label>Course</label>
+                            <select class="form-control" name="course" id="course" >
+
+                                {% for course in courses %}
+                                  <option value="{{ course.id }}">{{ course.course_name }}</option>
+                                {% endfor %}
+
+                            </select>
+						</div>
+                        <div class="form-holder">
+							<label>Session Year</label>
+                        <select class="form-control" name="session_year" id="session_year" >
+
+                            {% for session_year in session_years %}
+                              <option value="{{ session_year.id }}">{{ session_year.session_start_year |date:"Y" }} - {{ session_year.session_end_year|date:"Y" }}</option>
+                            {% endfor %}
+
+                        </select>
+						</div>
+
+
+
+						<div class="button">
+							<button type="button" id="fetch_student"  >Fetch Student</button>
+						</div>
+
+                        <div id="student_data" >
+
+                       </div>
+	                </section>
+
+
+
+            	</div>
+            </form>
+    <!-- /.content -->
+{% endblock main_content %}
+{% block custom_js %}
+<script>
+    $(document).ready(function(){
+        $("#fetch_student").click(function(){
+            var course=$("#course").val()
+            var session_year=$("#session_year").val()
+
+
+            $.ajax({
+                url:"/get_students",
+                type:'POST',
+                data:{"course":course,"session_year":session_year},
+            })
+          .done(function(response){
+                var json_data=JSON.parse(response);
+                if (json_data.length < 1) {
+                    alert("No data to display");}
+                else{
+
+                    var div_data="<div class='form-holder'><label>Student List</label><select name='student_list'>";
+                    for(key in json_data)
+                    {
+                        div_data+="<option value='"+json_data[key]['id']+"'>ID : "+json_data[key]['id']+" : "+json_data[key]['name']+" : "+json_data[key]['registration']+"</option>";
+                    }
+                    div_data+="</select>";
+                    div_data+="</div>";
+                    div_data+="<div class='form_holder'>";
+                    div_data+="<label> Term Test Mark : </label><input type='text' name='term_test_marks' class='form-control' placeholder='Enter Term Test Mark'>";
+                    div_data+="</div>";
+                    div_data+="<div class='form_holder'>";
+                    div_data+="<label> Attendance Marks : </label><input type='text' name='attendance_marks' class='form-control' placeholder='Enter Attendance Mark'>";
+                    div_data+="</div>"
+                    div_data+="<div class='form_holder'>";
+                    div_data+="<label> Semester Final Marks : </label><input type='text' name='semester_final_marks' class='form-control' placeholder='Enter Semester Final Mark'>";
+                    div_data+="</div>"
+                    div_data+="<div class='form_holder'>";
+                    div_data+="<label> Grade : </label><input type='text' name='grade' class='form-control' placeholder='Enter Grade'>";
+                    div_data+="</div>"
+                    div_data+="</div>";
+
+                    div_data+="<div class='button'>";
+                    div_data+="<button id='save_result' type='submit'>Save Result</button>";
+                    div_data+="</div>";
+
+                    $("#student_data").html(div_data);
+                }
+
+            })
+            .fail(function(){
+                alert("Error in Fetching Student")
+            });
+        });
+
+    })
+</script>
+{% endblock custom_js %}

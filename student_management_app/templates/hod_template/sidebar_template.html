@@ -1,0 +1,45 @@
+{% load static %}
+<div class="sidebar">
+			<div class="sidebar-menu">
+				<center class="profile">
+					<img src="{% static "Profile.jpg" %}" alt="">
+					<p>{{user.username}}</p>
+				</center>
+
+				<li class="item">
+					<a href="/add_session_year" class="menu-btn"><i class="fas fa-book-open"></i><span>Add Session Year</span></a>
+				</li>
+				<li class="item">
+					<a href="/add_department" class="menu-btn"><i class="fas fa-book"></i><span>Add Deptartment</span></a>
+				</li>
+				<li class="item">
+					<a href="/manage_department" class="menu-btn"><i class="fas fa-tasks"></i><span>Manage Department</span></a>
+				</li>
+				<li class="item">
+					<a href="/add_faculty" class="menu-btn"><i class="fas fa-user-tie"></i><span>Add Faculty</span></a>
+
+				</li>
+				<li class="item">
+					<a href="/manage_faculty" class="menu-btn"><i class="fas fa-book-reader"></i><span>Manage faculties</span></a>
+				</li>
+
+				<li class="item">
+					<a href="/add_student" class="menu-btn"><i class="fas fa-user-graduate"></i><span>Add Student</span></a>
+				</li>
+				<li class="item">
+					<a href="/manage_student" class="menu-btn"><i class="fas fa-users"></i><span>Manage Students</span></a>
+				</li>
+
+				<li class="item">
+					<a href="/add_course" class="menu-btn"><i class="fas fa-plus"></i><span>Add Course</span></a>
+				</li>
+				<li class="item">
+					<a href="/manage_course" class="menu-btn"><i class="fas fa-book-open"></i><span>Manage Course</span></a>
+				</li>
+				<li class="item">
+					<a href="#" class="menu-btn"><i class="fas fa-user-check"></i><span>View Attendance</span></a>
+				</li>
+
+			</div>
+
+</div>

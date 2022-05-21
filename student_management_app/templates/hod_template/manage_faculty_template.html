@@ -1,0 +1,51 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block main_content %}
+
+<!-- Main content -->
+
+
+            <div class="header-fixed">
+
+
+				<table>
+					<thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Profile Picture</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                      <th>Address</th>
+                      <th>Email Address</th>
+                      <th>Contact No</th>
+                      <th>Last Login</th>
+                      <th>Date Joined</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+					<tbody>
+                    {% for faculty in faculties %}
+                      <tr>
+                        <td>{{faculty.admin.id}}</td>
+                        <td><img src=" {{faculty.profile_pic}}"/></td>
+                        <td>{{faculty.admin.first_name}}</td>
+                        <td>{{faculty.admin.last_name}}</td>
+                        <td>{{faculty.admin.username}}</td>
+                        <td>{{faculty.address}}</td>
+                        <td>{{faculty.admin.email}}</td>
+                        <td>{{faculty.contact_no}}</td>
+
+                        <td>{{faculty.admin.last_login}}</td>
+                        <td>{{faculty.admin.date_joined}}</td>
+                        <td><button class="button"><a href="/edit_faculty/{{faculty.admin.id}}" >Edit</a></button></td>
+                      </tr>
+                  {% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+
+
+{% endblock main_content %}

@@ -1,0 +1,48 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block main_content %}
+{% load static %}
+
+   <form role="form" action="/add_session_year_save" method="post" enctype="multipart/form-data">
+            	<div id="wizard">
+            		<!-- SECTION 1 -->
+	                <h1>Add Session Year</h1>
+	                <section>
+
+	                	<div class="form-holder">
+							<label>Session Start Year</label>
+							<input type="date" class="form-control" name="session_start" placeholder="Enter Session Start Year">
+						</div>
+                        <div class="form-holder">
+							<label>Session End Year</label>
+							<input type="date" class="form-control" name="session_end" placeholder="Enter Session End Year">
+						</div>
+
+                         <div>
+                        	{% if messages %}
+                            	{% for message in messages %}
+                                {% if message.tags == "error" %}
+                                <div style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% if message.tags == "success" %}
+                                <div style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+
+                            	{% endfor %}
+                        	{% endif %}
+                    </div>
+                        {% csrf_token %}
+						<div class="button">
+							<button type="submit">Add Session Year</button>
+						</div>
+	                </section>
+
+					<!-- SECTION 2 -->
+
+	                <!-- SECTION 3 -->
+
+            	</div>
+            </form>
+
+    <!-- /.content -->
+{% endblock main_content %}

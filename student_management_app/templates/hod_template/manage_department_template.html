@@ -1,0 +1,30 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block main_content %}
+
+    <div class="header-fixed">
+        <table>
+            <thead>
+             <tr>
+              <th>ID</th>
+              <th>Department Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+            <tbody>
+            {% for department in departments %}
+            <tr>
+              <td>{{department.id}}</td>
+              <td>{{department.department_name}}</td>
+              <td><button class="button"><a href="/edit_department/{{department.id}}" >Edit</a></button></td>
+
+            </tr>
+          {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock main_content %}

@@ -1,0 +1,81 @@
+
+{% extends 'hod_template/base_template.html' %}
+
+{% block main_content %}
+{% load static %}
+
+   <form role="form" action="/add_faculty_save" method="post" enctype="multipart/form-data">
+            	<div id="wizard">
+            		<!-- SECTION 1 -->
+	                <h1>Add Faculty Information</h1>
+	                <section>
+	                	<div class="form-header">
+							<div class="avartar">
+								<a href="#">
+									<img src="{% static "images/avartar.png" %}">
+								</a>
+							</div>
+
+							<div class="form-group">
+								<div class="form-holder">
+									<label>First Name</label>
+									<input type="text" name="first_name" placeholder="First Name" class="form-control">
+								</div>
+								<div class="form-holder">
+									<label>Last Name</label>
+									<input type="text" name="last_name" placeholder="Last Name" class="form-control">
+								</div>
+								<div class="form-holder">
+									<label>User Name</label>
+									<input type="text" placeholder="Username" name="username" class="form-control">
+								</div>
+							</div>
+	                	</div>
+	                	<div class="form-holder">
+							<label>Email</label>
+							<input type="text" name="email" placeholder="Enter email" class="form-control">
+						</div>
+						<div class="form-holder">
+							<label>Password</label>
+							<input type="password" name="password" placeholder="Password" class="form-control">
+						</div>
+						<div class="form-holder">
+							<label>Address</label>
+							<input type="text" class="form-control" placeholder="Address" name="address" >
+						</div>
+						<div class="form-holder">
+							<label>Contact No</label>
+							<input type="text" placeholder="Contact No" name="contact_no" class="form-control">
+						</div>
+						<div class="choose_file">
+							<label>Profile Picture</label>
+									<input type="file" class="up-box" name="profile_pic" />
+								</div>
+                         <div>
+                        	{% if messages %}
+                            	{% for message in messages %}
+                                {% if message.tags == "error" %}
+                                <div style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% if message.tags == "success" %}
+                                <div style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+
+                            	{% endfor %}
+                        	{% endif %}
+                    </div>
+                        {% csrf_token %}
+						<div class="button">
+							<button type="submit">Add Faculty</button>
+						</div>
+	                </section>
+
+					<!-- SECTION 2 -->
+
+	                <!-- SECTION 3 -->
+
+            	</div>
+            </form>
+
+    <!-- /.content -->
+{% endblock main_content %}

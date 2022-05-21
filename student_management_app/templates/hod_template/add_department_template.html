@@ -1,0 +1,45 @@
+
+{% extends 'hod_template/base_template.html' %}
+
+{% block main_content %}
+{% load static %}
+
+   <form role="form" action="/add_department_save" method="post" >
+            	<div id="wizard">
+            		<!-- SECTION 1 -->
+	                <h1>Add Department</h1>
+	                <section>
+
+	                	<div class="form-holder">
+							<label>Department Name</label>
+							<input type="text" name="department_name" placeholder="Enter Department" class="form-control">
+						</div>
+
+                         <div>
+                        	{% if messages %}
+                            	{% for message in messages %}
+                                {% if message.tags == "error" %}
+                                <div style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+                                {% if message.tags == "success" %}
+                                <div style="margin-top:10px">{{ message }}</div>
+                                {% endif %}
+
+                            	{% endfor %}
+                        	{% endif %}
+                    </div>
+                        {% csrf_token %}
+						<div class="button">
+							<button type="submit">Add Department</button>
+						</div>
+	                </section>
+
+					<!-- SECTION 2 -->
+
+	                <!-- SECTION 3 -->
+
+            	</div>
+            </form>
+
+    <!-- /.content -->
+{% endblock main_content %}

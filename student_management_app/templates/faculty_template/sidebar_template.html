@@ -1,0 +1,23 @@
+{% load static %}
+<div class="sidebar">
+			<div class="sidebar-menu">
+				<center class="profile">
+					<img src="{% static "Profile.jpg" %}" alt="">
+					<p>{{user.username}}</p>
+				</center>
+				<li class="item">
+					<a href="/faculty_profile" class="menu-btn"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+
+				</li>
+				<li class="item">
+					<a href="/faculty_add_result" class="menu-btn"><i class="fas fa-poll"></i><span>Add Result</span></a>
+				</li>
+				<li class="item">
+					<a href="/manage_faculty" class="menu-btn"><i class="fas fa-book-reader"></i><span>Update Result</span></a>
+				</li>
+
+
+
+			</div>
+
+</div>

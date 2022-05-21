@@ -1,0 +1,45 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block main_content %}
+
+<!-- Main content -->
+
+
+            <div class="header-fixed">
+
+
+				<table>
+					<thead>
+                     <tr>
+                      <th>ID</th>
+                      <th>Course Name</th>
+                      <th>Department ID</th>
+                      <th>Department Name</th>
+                      <th>Faculty Name </th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+					<tbody>
+                    {% for course in courses %}
+                      <tr>
+                       <td>{{course.id}}</td>
+                      <td>{{course.course_name}}</td>
+                      <td>{{course.department_id.id}}</td>
+                      <td>{{course.department_id.department_name}}</td>
+                      <td>{{course.faculty_id.first_name}} {{course.faculty_id.last_name}}</td>
+
+
+                      <td><button class="button"> <a href="/edit_course/{{course.id}}" >Edit</a></button></td>
+
+
+
+                      </tr>
+                  {% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+
+
+{% endblock main_content %}

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Student Management System</title>
+
+<!--	<link rel="stylesheet" href="{% static "table.css" %}">-->
+
+	<link rel="stylesheet" href="{% static "sidebar2.css" %}">
+	<link rel="stylesheet" href="{% static "tablestyle.css" %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+		<!-- STYLE CSS -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+
+
+  {% block custom_css %}
+  {% endblock custom_css %}
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="header-menu">
+				<h2>Student Management System Admin Login</h2>
+				<div class="right_area">
+			<a href="/logout_user" class="logout_btn">Logout</a>
+		</div>
+				<div class="sidebar-btn">
+					<i class="fas fa-bars"></i>
+				</div>
+			<ul>
+				<li>
+					<a href="/admin_home" class="home_btn">Home</a>
+				</li>
+
+			</ul>
+		</div>
+	 </div>
+
+		{% include 'hod_template/sidebar_template.html' with user=user %}
+		<div class="wrapper">
+
+            {% block main_content %} {% endblock main_content %}
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+       $(".sidebar-btn").click(function(){
+       	$(".wrapper").toggleClass("collapse");
+       });
+       $(".sidebar").click(function(){
+       	$(".wrapper").removeClass("collapse");
+       });
+		});
+	</script>
+
+
+{% block custom_js %}
+{% endblock custom_js %}
+
+		
+
+</body>
+</html>
